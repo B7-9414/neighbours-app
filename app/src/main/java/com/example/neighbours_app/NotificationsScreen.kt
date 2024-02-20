@@ -12,14 +12,14 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
 
 @Composable
-fun HomeScreen(navController: NavController) {
+fun NotificationsScreen(navController: NavController) {
     Scaffold(bottomBar = { BottomNavigationBar(navController) }) { padding ->
         Column(
             modifier = Modifier.fillMaxSize().padding(padding),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Text(text = "Home Screen")
+            Text(text = "Notifications Screen")
         }
     }
 }

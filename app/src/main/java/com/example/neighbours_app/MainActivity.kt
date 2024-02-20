@@ -18,17 +18,30 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
-
 @Composable
 fun NavGraph() {
     val navController = rememberNavController()
-    NavHost(navController = navController, startDestination = "starting_screen") {
-        composable("starting_screen") {
+    NavHost(navController = navController, startDestination = "home") {
+        composable("home") {
             HomeScreen(navController = navController)
+        }
+        composable("neighbours"){
+            NeighboursScreen(navController = navController)
+        }
+        composable("notifications"){
+            NotificationsScreen(navController = navController)
+        }
+        composable("account"){
+            AccountScreen(onLoginSuccess = { /* Implement login success logic here */ },
+                navController = navController)
         }
         composable("personal_screen/{name}") { backStackEntry ->
             val name = backStackEntry.arguments?.getString("name") ?: ""
-            PersonalScreen(navController = navController, name = name)
+            // Pass empty strings for sharedString and updateString
+            PersonalScreen(
+                navController = navController,
+                name = name,
+            )
         }
     }
 }
